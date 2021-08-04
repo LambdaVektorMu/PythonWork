@@ -25,7 +25,9 @@ title = detail.find('div', {'class': 'cassetteitem_content-title'}).text
 # 住所
 address = detail.find('li', {'class': 'cassetteitem_detail-col1'}).text
 # アクセス情報
+print(type(detail.find('li', {'class': 'cassetteitem_detail-col2'}).text))
 access = detail.find('li', {'class': 'cassetteitem_detail-col2'}).text
+print(type(access))
 # 築年数
 age = detail.find('li', {'class': 'cassetteitem_detail-col3'}).text
 print(title, address, access, age)
