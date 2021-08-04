@@ -1,9 +1,9 @@
+#!/home/l_vektor_m/PythonWork/ScrapingStudy/bin/python3
 # coding: utf-8
 
 import warnings
 import requests
 from bs4 import BeautifulSoup
-from requests.api import delete
 
 warnings.filterwarnings('ignore')  # warningが出ないようにする
 
@@ -30,6 +30,14 @@ access = detail.find('li', {'class': 'cassetteitem_detail-col2'}).text
 age = detail.find('li', {'class': 'cassetteitem_detail-col3'}).text
 print(title, address, access, age)
 
+# 物件情報の辞書
+detail_dic = {
+    'title': title,
+    'address': address,
+    'access': access,
+    'age': age
+}
+
 # 各部屋情報クラス：cassetteitem_other
 table = content0.find('table', {'class': 'cassetteitem_other'})
 tr_tags = table.find_all('tr', {'class': 'js-cassette_link'})
@@ -55,4 +63,34 @@ print(price_rent, price_administration, price_deposit, price_gratuity, layout, a
 print(a) """
 
 target_items = tr_tag0.find_all('td')[2:6]
-print(target_items)
+for ti in target_items:
+    print(ti)
+
+floor, price, first_fee, capacity = target_items
+
+fee, management_fee = price.find_all('li')
+print('=============start')
+print(fee)
+print(management_fee)
+print()
+deposit, gratuity = first_fee.find_all('li')
+print(deposit)
+print(gratuity)
+print()
+madori, menseki = capacity.find_all('li')
+print(madori)
+print(menseki)
+print('=============end')
+
+# 部屋情報の辞書
+room_dic = {
+    'floor': floor.text,
+    'fee': fee.text,
+    'management_fee': management_fee.text,
+    'deposit': deposit.text,
+    'gratuity': gratuity.text,
+    'madori': madori.text,
+    'menseki': menseki.text
+}
+
+print(detail_dic, room_dic)
