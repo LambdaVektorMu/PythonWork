@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{name}}</title>
+    </head>
+    <body>
+        {% if name == 'sony' %}
+        <h1>{{name}}:SIEの売値</h1>
+        {% elif name %}
+        <h1>{{name}}</h1>
+        {% else %}
+        <h1>ebayの売値</h1>
+        {% endif %}
+        <img src="static/images/ebay_PS5BR-DE.png" alt="ebay_PS5BR-DE">
+    </body>
+</html>
