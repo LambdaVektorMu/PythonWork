@@ -4,13 +4,27 @@
         <title>{{name}}</title>
     </head>
     <body>
-        {% if name == 'sony' %}
-        <h1>{{name}}:SIEの売値</h1>
+        {% if name == 'vektor' %}
+        <h1>スペシャル{{name}}神社</h1>
         {% elif name %}
-        <h1>{{name}}</h1>
+        <h1>{{name}}神社</h1>
         {% else %}
-        <h1>ebayの売値</h1>
+        <h1>ただの神社</h1>
         {% endif %}
-        <img src="static/images/ebay_PS5BR-DE.png" alt="ebay_PS5BR-DE">
+
+        <!-- 以下追加 -->
+        <!-- テキストと送信ボタンのみの簡単なフォーム -->
+        <form action="/index" method="POST">
+            <input type="text" name="name" placeholder="Enter name">
+            <input type="submit" value="Submit">
+        </form>
+        <!-- 追加終了 -->
+
+        <img src="/static/images/torii.png" alt="鳥居" width="30%" height="30%">
+
+        <!-- お願い表示欄 -->
+        {% for onegai in onegai_list %}
+        <p>{{onegai.title}}:{{onegai.body}}</p>
+        {% endfor %}
     </body>
 </html>
