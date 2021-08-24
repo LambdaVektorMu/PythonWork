@@ -12,19 +12,24 @@
         <h1>ただの神社</h1>
         {% endif %}
 
-        <!-- 以下追加 -->
         <!-- テキストと送信ボタンのみの簡単なフォーム -->
-        <form action="/index" method="POST">
+        <form action="/index" method="post">
             <input type="text" name="name" placeholder="Enter name">
             <input type="submit" value="Submit">
         </form>
-        <!-- 追加終了 -->
 
         <img src="/static/images/torii.png" alt="鳥居" width="30%" height="30%">
 
+        <!-- お願い記入欄 -->
+        <form action="/add" method="post">
+            <input type="text" name="title" placeholder="題名">
+            <input type="text" name="body" placeholder="願い事詳細">
+            <input type="submit" value="Add">
+        </form>
+
         <!-- お願い表示欄 -->
         {% for onegai in onegai_list %}
-        <p>{{onegai.title}}:{{onegai.body}}</p>
+        <p>{{onegai.title}}:{{onegai.body}}[{{onegai.date}}]</p>
         {% endfor %}
     </body>
 </html>

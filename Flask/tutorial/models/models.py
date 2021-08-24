@@ -5,26 +5,27 @@ from datetime import datetime
 
 class OnegaiContent(object):
     __collection_name__ = 'jinja'
+    onegai_dict = {}
     def __init__(self) -> None:
-        self.title = ''
-        self.body = ''
-        self.date = datetime.now()
+        self.onegai_dict['title'] = ''
+        self.onegai_dict['body'] = ''
+        self.onegai_dict['date'] = datetime.now()
 
     def __init__(self, title=None, body=None, date=None):
         # お願い題名
         if title is not None:
-            self.title = title
+            self.onegai_dict['title'] = title
         else:
-            self.title = ''
+            self.onegai_dict['title'] = ''
 
         # お願いの内容
         if body is not None:
-            self.body = body
+            self.onegai_dict['body'] = body
         else:
-            self.body = ''
+            self.onegai_dict['body'] = ''
 
         # 日付
         if date is not None:
-            self.date = date
+            self.onegai_dict['date'] = date
         else:
-            self.date = datetime.now()
+            self.onegai_dict['date'] = datetime.now()
