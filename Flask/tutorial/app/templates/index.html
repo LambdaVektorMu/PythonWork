@@ -27,9 +27,24 @@
             <input type="submit" value="Add">
         </form>
 
-        <!-- お願い表示欄 -->
-        {% for onegai in onegai_list %}
-        <p>{{onegai.title}}:{{onegai.body}}[{{onegai.date}}]</p>
-        {% endfor %}
+        <!-- お願い更新 -->
+        <!-- ラジオボタンが押されていない状態で更新ボタンを押すとHTML400エラー -->
+        <form action="/upload" method="post" id="update">
+            <input type="text" name="title" placeholder="題名">
+            <input type="text" name="body" placeholder="願い事詳細">
+            <input type="submit" value="Update">
+        </form>
+        <!-- お願い削除 -->
+        <form action="/delete" method="post" id="delete">
+            <input type="submit" value="Delete Selected All Onegai">
+        </form>
+            {% for onegai in onegai_list %}
+            <div>
+                <input type="radio" name="update" form="update" value="{{onegai._id}}">
+                <input type="checkbox" name="delete" form="delete" value="{{onegai._id}}">
+                {{onegai.title}}:{{onegai.body}}（{{onegai.date}}）
+            </div>
+            {% endfor %}
+
     </body>
 </html>
