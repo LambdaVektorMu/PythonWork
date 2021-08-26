@@ -9,6 +9,11 @@ WISH_TITLE = 'title'
 WISH_BODY = 'body'
 WISH_DATETIME = 'date'
 
+# ユーザー情報
+USER_ID = '_id'
+USER_NAME = 'user_name'
+USER_PASSWORD = 'password'
+
 class OnegaiContent(object):
     onegai_dict = {}
     def __init__(self) -> None:

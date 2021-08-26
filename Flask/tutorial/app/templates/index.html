@@ -3,6 +3,7 @@
     <head>
         <title>{{name}}</title>
     </head>
+    <a href="/logout"> ログアウトする </a>
     <body>
         {% if name == 'vektor' %}
         <h1>スペシャル{{name}}神社</h1>
@@ -11,12 +12,6 @@
         {% else %}
         <h1>ただの神社</h1>
         {% endif %}
-
-        <!-- テキストと送信ボタンのみの簡単なフォーム -->
-        <form action="/index" method="post">
-            <input type="text" name="name" placeholder="Enter name">
-            <input type="submit" value="Submit">
-        </form>
 
         <img src="/static/images/torii.png" alt="鳥居" width="30%" height="30%">
 

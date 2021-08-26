@@ -29,6 +29,14 @@ class MongoDB(object):
     def delete_one_onegai(self, id:str):
         return self.collection.delete_one(filter={models.WISH_ID:ObjectId(id)})
 
+    # ユーザー認証
+    def select_user(self, name:str):
+        return self.collection.find_one(filter={models.USER_NAME:name})
+
+    # ユーザー登録
+    def insert_user(self, user_data):
+        return self.collection.insert_one(user_data)
+
 def cursor_2_onegai_list(cur):
     onegai_list = []
     for c in cur:
